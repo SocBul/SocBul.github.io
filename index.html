@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<title>SocBul</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+/* MIN CSS <https://mincss.com> */
+body,textarea,input,select{background:0;border-radius:0;font:16px sans-serif;margin:0}.addon,.btn-sm,.nav,textarea,input,select{outline:0;font-size:14px}.smooth{transition:all .2s}.btn,.nav a{text-decoration:none}.container{margin:0 20px;width:auto}@media(min-width:1310px){.container{margin:auto;width:1270px}}.btn,h2{font-size:2em}.row{margin:1% 0;overflow:auto}.col{float:left}.table,.c12{width:100%}.c11{width:91.66%}.c10{width:83.33%}.c9{width:75%}.c8{width:66.66%}.c7{width:58.33%}.c6{width:50%}.c5{width:41.66%}.c4{width:33.33%}.c3{width:25%}.c2{width:16.66%}.c1{width:8.33%}@media(max-width:870px){.row .col{width:100%}}
+
+/* CSS propio */
+body {
+  font-family: "Figtree", sans-serif;
+  background: black;
+  color: white;
+  margin: 5px 25%;
+}
+
+h1 { font-size: 35px; }
+h2 { font-size: 28px; color: #bbb; }
+h3 { font-size: 25px; }
+  
+ul { list-style: none; padding: 0; }
+li { font-size: x-large; font-weight: bold; text-transform: uppercase; }
+a { color: white; text-decoration: underline; cursor: pointer; }
+a:hover, a:active { color: #ddd; font-style: italic; }
+
+#page_close {
+  background: white;
+  color: black;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="row">
+<div class="col c2">
+  <h1>SocBul</h1>
+</div>
+<div id="menu" class="col c10" style="display: block;">
+  <h2>Yo y esto</h2>
+  <ul>
+    <li><a onclick="loadPage('acerca');">Acerca</a></li>
+  </ul>
+  <h2>Proyectos</h2>
+  <ul>
+    <li><a href="https://irbulevar.now.sh/">IR Bulevar</a></li>
+    <li><a href="https://rieltres.blogspot.com/">Riel Tres</a></li>
+  </ul>
+</div>
+<div id="page" class="col c10" style="display: none;">
+  <button id="page_close" onclick="loadMenu();" style="float: right;">X</button>
+  <h2 id="page_title"></h2>
+  <div id="page_content"></div>
+</div>
+<p>&copy;2024 <i>Sociedad del Bulevar</i>. <a href="https://github.com/socbul">GitHub</a>.</p>
+<script>
+const menuElm = document.getElementById("menu");
+const pageElm = document.getElementById("page");
+
+function hideElm(element) {
+  element.style = "display: none;";
+}
+function showElm(element) {
+  element.style = "display: block;";
+}
+  
+function loadPage(page) {
+  const pageTitleElm = document.getElementById("page_title");
+  const pageContentElm = document.getElementById("page_content");
+  
+  switch(page) {
+    case "acerca":
+      pageTitleElm.innerText = "Acerca";
+      pageContentElm.innerHTML = `
+      <p>Desde hace mucho tiempo trat&eacute; de abrir un peque&ntilde;o espacio donde conocidos y desconocidos pudiesen expresarse y formar una especie de comunidad o lugarcito. Algo alejado de las grandes masas, como los grandes streamers y creadores. Crear un lugar donde la gente cercana y m&aacute;s o menos cercana puedan compartir sus rudimentarias historias/juegos/programas sin un margen de excelencia y de forma segura. Donde pueda haber juntadas o ciber-juntadas y pasarla bien.</p>
+      <p>Personalmente siempre quice empezar una radio, un canal de televisi&oacute;n o una revista y hacer una historia. Por eso cree esto como para ponerle un nombre a todos esos exprimentos.</p>
+      <p><i>Ghost</i></p>
+      `;
+  }
+
+  hideElm(menuElm);
+  showElm(pageElm);
+}
+
+function loadMenu() {
+  hideElm(pageElm);
+  showElm(menuElm);
+}
+</script>
+</body>
+</html>
